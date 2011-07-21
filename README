@@ -1,8 +1,10 @@
-# Alex VIM Config
+Alex VIM Config
+===============
 
 Meine aktuelle VIM Konfiguration inklusive Script zur Installation und Update meiner Bundles
 
-## Install
+Install
+-------
 
 1. Clone Repository
 2. ln -s .vim/vimrc ~/.vimrc
