@@ -46,7 +46,6 @@ get_bundle mattn gist-vim
 get_bundle scrooloose nerdtree
 get_bundle esukram taglist.vim
 
-get_bundle skammer vim-css-color
 get_bundle hallison vim-rdoc
 
 get_bundle vim-scripts vcscommand.vim
