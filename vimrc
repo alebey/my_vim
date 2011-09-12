@@ -1,3 +1,4 @@
+filetype on
 filetype off
 runtime! autoload/pathogen.vim
 if exists('g:loaded_pathogen')
@@ -11,7 +12,7 @@ filetype plugin indent on
 
 augroup vimrc
   autocmd!
-  autocmd GuiEnter * set guifont=Monaco:h16 guioptions-=T columns=120 lines=70 number
+  autocmd GuiEnter * set guifont=Monaco:h10 guioptions-=T columns=240 lines=70 number
 augroup END
 
 if filereadable(expand('~/.vim/vimrc.local'))

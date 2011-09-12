@@ -15,9 +15,9 @@ set incsearch
 set backspace=indent,eol,start
 
 " Set terminal to 256 colors
-" set t_Co=256
+set t_Co=256
 " Textmate scheme colors clone
-" colorscheme vividchalk
+colorscheme vividchalk
 " colorscheme vibrantink
 " colorscheme herald
 
@@ -90,11 +90,19 @@ vnoremap <silent> <S-TAB> <gv
 
 " A really status line
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-if &statusline == ''
-  set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-end
-set laststatus=2
+if has('statusline')
+        set laststatus=2
 
+    " Broken down into easily includeable segments
+    set statusline=%<%f\    " Filename
+    set statusline+=%w%h%m%r " Options
+    set statusline+=%{fugitive#statusline()} "  Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " filetype
+    set statusline+=\ [%{getcwd()}]          " current dir
+    "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+ 
 
 " Toggle paste mode
 nmap <silent> <F2> :set invpaste<CR>:set paste?<CR>
@@ -171,7 +179,10 @@ set wildmode=longest:full,full
 " Read on comments:
 " set diffopt+=iwhite             " ignore whitespace in diff mode
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDCommenter                                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F6> :NERDComToggleComment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDtree                                                      "
 " Don't need presentation                                       "
@@ -208,6 +219,7 @@ let g:Tlist_Show_One_File = 1
 set wildignore+=*.log,*.jpg,*.png,*.gif,*.swp,vendor/rails/**
 let g:CommandTMatchWindowAtTop=1
 nmap <silent> <Leader>ft :CommandT<CR>
+nmap <silent> <C-t> :CommandT<CR>
 
 
 
@@ -261,3 +273,7 @@ let g:ruby_debugger_cucumber_path = '/usr/local/bin/cucumber' " set Cucumber pat
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Remove detault mappings
 let VCSCommandDisableMappings=1
+" Supertab {
+    let g:SuperTabDefaultCompletionType = "context"
+    let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+  " }

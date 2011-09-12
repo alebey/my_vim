@@ -52,3 +52,4 @@ get_bundle hallison vim-rdoc
 get_bundle vim-scripts vcscommand.vim
 get_bundle vim-scripts vimwiki
 get_bundle kchmck vim-coffee-script
+get_bundle ervandew supertab
